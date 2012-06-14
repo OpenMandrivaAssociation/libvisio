@@ -3,12 +3,12 @@
 
 Name:		libvisio
 Version:	0.0.17
-Release:	1
+Release:	2
 Summary:	A library providing ability to interpret and import visio diagrams
 Group:		System/Libraries
 License:	GPL+ or LGPLv2+ or MPLv1.1
 URL:		http://www.freedesktop.org/wiki/Software/libvisio
-Source:		http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
+Source0:	http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(libwpd-0.9)
