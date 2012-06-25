@@ -2,8 +2,8 @@
 %define libname %mklibname visio %{major}
 
 Name:		libvisio
-Version:	0.0.17
-Release:	2
+Version:	0.0.18
+Release:	1
 Summary:	A library providing ability to interpret and import visio diagrams
 Group:		System/Libraries
 License:	GPL+ or LGPLv2+ or MPLv1.1
