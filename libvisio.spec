@@ -76,6 +76,7 @@ Currently supported: XHTML, raw.
 %files tools
 %{_bindir}/vsd2raw
 %{_bindir}/vsd2xhtml
+%{)bindir}/vsd2text
 
 #--------------------------------------------------------------------
 
