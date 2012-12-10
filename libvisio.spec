@@ -2,7 +2,7 @@
 %define libname %mklibname visio %{major}
 
 Name:		libvisio
-Version:	0.0.18
+Version:	0.0.21
 Release:	1
 Summary:	A library providing ability to interpret and import visio diagrams
 Group:		System/Libraries
@@ -11,6 +11,8 @@ URL:		http://www.freedesktop.org/wiki/Software/libvisio
 Source0:	http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	doxygen
+BuildRequires:	gperf
+BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(libwpd-0.9)
 BuildRequires:	pkgconfig(libwpg-0.2)
 
@@ -77,6 +79,9 @@ Currently supported: XHTML, raw.
 %{_bindir}/vsd2raw
 %{_bindir}/vsd2xhtml
 %{_bindir}/vsd2text
+%{_bindir}/vss2xhtml
+%{_bindir}/vss2text
+%{_bindir}/vss2raw
 
 #--------------------------------------------------------------------
 
@@ -92,5 +97,4 @@ sed -i \
 %make
 
 %install
-%__rm -rf %{buildroot}
 %makeinstall_std
