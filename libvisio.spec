@@ -1,17 +1,19 @@
-%define major 0
-%define libname %mklibname visio %{major}
+%define api	0.0
+%define major	0
+%define libname %mklibname visio %{api} %{major}
+%define devname %mklibname visio -d
 
+Summary:	A library providing ability to interpret and import visio diagrams
 Name:		libvisio
 Version:	0.0.21
 Release:	1
-Summary:	A library providing ability to interpret and import visio diagrams
 Group:		System/Libraries
-License:	GPL+ or LGPLv2+ or MPLv1.1
-URL:		http://www.freedesktop.org/wiki/Software/libvisio
+License:	GPLv2+ or LGPLv2+ or MPLv1.1
+Url:		http://www.freedesktop.org/wiki/Software/libvisio
 Source0:	http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
-BuildRequires:	boost-devel
 BuildRequires:	doxygen
 BuildRequires:	gperf
+BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(libwpd-0.9)
 BuildRequires:	pkgconfig(libwpg-0.2)
@@ -21,7 +23,13 @@ Libvisio is library providing ability to interpret and import visio
 diagrams into various applications. You can find it being used in
 libreoffice.
 
-#--------------------------------------------------------------------
+%package tools
+Summary:	Tools to transform Visio diagrams into other formats
+Group:		Publishing
+
+%description tools
+Tools to transform Visio diagrams into other formats.
+Currently supported: XHTML, raw.
 
 %package -n %{libname}
 Summary:	Development files for %{name}
@@ -32,48 +40,27 @@ Libvisio is library providing ability to interpret and import visio
 diagrams into various applications. You can find it being used in
 libreoffice.
 
-%files -n %{libname}
-%{_libdir}/%{name}-0.0.so.%{major}*
-
-#--------------------------------------------------------------------
-
-%package devel
+%package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
 
-%description devel
-The %{name}-devel package contains libraries and header files for
+%description -n %{devname}
+This package contains libraries and header files for
 developing applications that use %{name}.
 
-%files devel
-%{_includedir}/%{name}-0.0
-%{_libdir}/%{name}-0.0.so
-%{_libdir}/pkgconfig/%{name}-0.0.pc
+%prep
+%setup -q
 
-#--------------------------------------------------------------------
+%build
+%configure2_5x \
+	--disable-static \
+	--disable-werror
+    
+%make
 
-%package doc
-Summary:	Documentation of %{name} API
-Group:		Books/Howtos
-BuildArch:	noarch
-
-%description doc
-The %{name}-doc package contains documentation files for %{name}.
-
-%files doc
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/html
-
-#--------------------------------------------------------------------
-
-%package tools
-Summary:	Tools to transform Visio diagrams into other formats
-Group:		Publishing
-
-%description tools
-Tools to transform Visio diagrams into other formats.
-Currently supported: XHTML, raw.
+%install
+%makeinstall_std
 
 %files tools
 %{_bindir}/vsd2raw
@@ -83,18 +70,13 @@ Currently supported: XHTML, raw.
 %{_bindir}/vss2text
 %{_bindir}/vss2raw
 
-#--------------------------------------------------------------------
+%files -n %{libname}
+%{_libdir}/%{name}-%{api}.so.%{major}*
 
-%prep
-%setup -q
+%files -n %{devname}
+%dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/html
+%{_includedir}/%{name}-%{api}
+%{_libdir}/%{name}-%{api}.so
+%{_libdir}/pkgconfig/%{name}-%{api}.pc
 
-%build
-%configure2_5x --disable-static --disable-werror
-sed -i \
-    -e 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' \
-    -e 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' \
-    libtool
-%make
-
-%install
-%makeinstall_std
