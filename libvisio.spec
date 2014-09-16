@@ -1,22 +1,21 @@
-%define api	0.0
-%define major	0
+%define api	0.1
+%define major	1
 %define libname %mklibname visio %{api} %{major}
 %define devname %mklibname visio -d
 
 Summary:	A library providing ability to interpret and import visio diagrams
 Name:		libvisio
-Version:	0.0.21
-Release:	7
+Version:	0.1.0
+Release:	1
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		http://www.freedesktop.org/wiki/Software/libvisio
-Source0:	http://dev-www.libreoffice.org/src/%{name}-%{version}.tar.xz
+Source0:	http://dev-www.libreoffice.org/src/libvisio/%{name}-%{version}.tar.xz
 BuildRequires:	doxygen
 BuildRequires:	gperf
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libxml-2.0)
-BuildRequires:	pkgconfig(libwpd-0.9)
-BuildRequires:	pkgconfig(libwpg-0.2)
+BuildRequires:	pkgconfig(librevenge-0.0)
 
 %description
 Libvisio is library providing ability to interpret and import visio
