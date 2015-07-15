@@ -1,0 +1,27 @@
+From 886221dccacd69d7dc7155fa42d3dd902286b846 Mon Sep 17 00:00:00 2001
+From: David Tardon <dtardon@redhat.com>
+Date: Fri, 2 Jan 2015 22:21:41 +0100
+Subject: [PATCH] define more needed namespaces
+
+Change-Id: I83ada29e6bc89d8f045cfbe7c099ca5ec6553645
+---
+ src/test/xmldrawinggenerator.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/test/xmldrawinggenerator.cpp b/src/test/xmldrawinggenerator.cpp
+index 78484e0..771caff 100644
+--- a/src/test/xmldrawinggenerator.cpp
++++ b/src/test/xmldrawinggenerator.cpp
+@@ -33,6 +33,9 @@ void XmlDrawingGenerator::startDocument(const librevenge::RVNGPropertyList &prop
+ 
+   xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:dc"), BAD_CAST("urn:oasis:names:tc:opendocument:xmlns:meta:1.0"));
+   xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:draw"), BAD_CAST("urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"));
++  xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:fo"), BAD_CAST("urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"));
++  xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:librevenge"), BAD_CAST("urn:x-documentliberation:xmlns:librevenge:0.0"));
++  xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:style"), BAD_CAST("urn:oasis:names:tc:opendocument:xmlns:style:1.0"));
+   xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:svg"), BAD_CAST("urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"));
+   xmlTextWriterWriteAttribute(m_writer, BAD_CAST("xmlns:meta"), BAD_CAST("urn:oasis:names:tc:opendocument:xmlns:meta:1.0"));
+ 
+-- 
+2.3.5
+
