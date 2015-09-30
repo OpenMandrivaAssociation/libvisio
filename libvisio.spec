@@ -5,7 +5,7 @@
 
 Summary:	A library providing ability to interpret and import visio diagrams
 Name:		libvisio
-Version:	0.1.0
+Version:	0.1.3
 Release:	1
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
@@ -14,6 +14,7 @@ Source0:	http://dev-www.libreoffice.org/src/libvisio/%{name}-%{version}.tar.xz
 BuildRequires:	doxygen
 BuildRequires:	gperf
 BuildRequires:	boost-devel
+BuildRequires:	pkgconfig(cppunit)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(librevenge-0.0)
 
@@ -50,9 +51,10 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--disable-werror
     
