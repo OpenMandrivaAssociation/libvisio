@@ -54,6 +54,7 @@ developing applications that use %{name}.
 %apply_patches
 
 %build
+export CPPFLAGS='-DBOOST_ERROR_CODE_HEADER_ONLY -DBOOST_SYSTEM_NO_DEPRECATED'
 %configure \
 	--disable-static \
 	--disable-werror
