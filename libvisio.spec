@@ -6,7 +6,7 @@
 Summary:	A library providing ability to interpret and import visio diagrams
 Name:		libvisio
 Version:	0.1.3
-Release:	1
+Release:	0.1
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		http://www.freedesktop.org/wiki/Software/libvisio
@@ -54,7 +54,7 @@ developing applications that use %{name}.
 %apply_patches
 
 %build
-%configure \
+%configure2_5x \
 	--disable-static \
 	--disable-werror
     
