@@ -14,6 +14,7 @@ Source0:	http://dev-www.libreoffice.org/src/libvisio/%{name}-%{version}.tar.xz
 BuildRequires:	doxygen
 BuildRequires:	gperf
 BuildRequires:	boost-devel
+BuildRequires:	boost-core-devel
 BuildRequires:	pkgconfig(cppunit)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(librevenge-0.0)
