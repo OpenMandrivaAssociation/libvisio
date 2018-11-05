@@ -18,6 +18,7 @@ BuildRequires:	boost-core-devel
 BuildRequires:	pkgconfig(cppunit)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(librevenge-0.0)
+BuildRequires:	pkgconfig(icu-uc)
 
 %description
 Libvisio is library providing ability to interpret and import visio
@@ -51,8 +52,7 @@ This package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 export CPPFLAGS='-DBOOST_ERROR_CODE_HEADER_ONLY -DBOOST_SYSTEM_NO_DEPRECATED'
@@ -60,10 +60,10 @@ export CPPFLAGS='-DBOOST_ERROR_CODE_HEADER_ONLY -DBOOST_SYSTEM_NO_DEPRECATED'
 	--disable-static \
 	--disable-werror
     
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files tools
 %{_bindir}/vsd2raw
