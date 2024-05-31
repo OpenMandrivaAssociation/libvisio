@@ -1,12 +1,13 @@
 %define api	0.1
 %define major	1
-%define libname %mklibname visio %{api} %{major}
+%define oldlibname %mklibname visio %{api} %{major}
+%define libname %mklibname visio
 %define devname %mklibname visio -d
 
 Summary:	A library providing ability to interpret and import visio diagrams
 Name:		libvisio
 Version:	0.1.7
-Release:	4
+Release:	5
 Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		https://wiki.documentfoundation.org/DLP/Libraries/libvisio
@@ -36,6 +37,8 @@ Currently supported: XHTML, raw.
 %package -n %{libname}
 Summary:	Development files for %{name}
 Group:		System/Libraries
+# Renamed after 5.0
+%rename %{oldlibname}
 
 %description -n %{libname}
 Libvisio is library providing ability to interpret and import visio
