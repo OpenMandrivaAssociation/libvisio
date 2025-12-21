@@ -12,6 +12,11 @@ Group:		System/Libraries
 License:	GPLv2+ or LGPLv2+ or MPLv1.1
 Url:		https://wiki.documentfoundation.org/DLP/Libraries/libvisio
 Source0:	http://dev-www.libreoffice.org/src/libvisio/%{name}-%{version}.tar.xz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	doxygen
 BuildRequires:	gperf
 BuildRequires:	boost-devel
